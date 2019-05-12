@@ -1,22 +1,25 @@
 package com.afkl.cases.df.fareDetails;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
+import java.io.Serializable;
 import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Value;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
-
-@JsonInclude(NON_NULL)
+//@JsonInclude(NON_NULL)
 @Value
-public class Location {
+public class Location implements Serializable,Comparable<Location>{
 
-    private String code, name, description;
-    private Coordinates coordinates;
-    private Location parent;
-    private Set<Location> children;
+	@JsonProperty("code")
+    private String code;
 	
+	@JsonProperty("name")
+    private String name;
+	
+	@JsonProperty("description")
+    private String description;
+
     public Location() {
 		super();
 	}
@@ -32,19 +35,10 @@ public class Location {
 	public String getDescription() {
 		return description;
 	}
-	
-	public Coordinates getCoordinates() {
-		return coordinates;
+
+	@Override
+	public int compareTo(Location location) {
+		return this.code.compareTo(location.code);
 	}
-	
-	public Location getParent() {
-		return parent;
-	}
-	
-	public Set<Location> getChildren() {
-		return children;
-	}
-	
- 
     
 }

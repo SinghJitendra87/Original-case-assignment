@@ -22,7 +22,7 @@ public class FareDetailsService {
 	@Value("${travel.api.uri.airports}")
 	private String uriAirports;
 	
-	private static final Logger logger = LoggerFactory.getLogger(FareDetailsController.class);
+	private static final Logger logger = LoggerFactory.getLogger(FareDetailsService.class);
 
 
 	public CompletableFuture<Fare> getFareDetails(final String origin, final String destination) {
