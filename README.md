@@ -19,3 +19,6 @@ To get the fare details :
 To get the statistics : 
 [http://localhost:9000/travel/status-metric](http://localhost:9000/travel/status-metric)
 
+To get all the airports (sorted):
+[http://localhost:9000/travel/airports](http://localhost:9000/travel/airports)
+
