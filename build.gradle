@@ -32,15 +32,12 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web") {
+    compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
-    implementation("org.springframework.boot:spring-boot-starter-jetty")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-security")
-    //implementation ("org.springframework.boot:spring-boot-starter-oauth2-client:2.1.1.RELEASE")
-    
     compile("org.springframework.security.oauth:spring-security-oauth2:2.1.1.RELEASE")
     provided 'org.projectlombok:lombok:1.12.6'
     testCompile("junit:junit")

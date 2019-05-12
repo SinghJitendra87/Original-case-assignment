@@ -7,11 +7,13 @@ import java.util.concurrent.CompletableFuture;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.afkl.cases.df.statistics.MetricService;
 
 @RestController
 @RequestMapping("/fareDetails/{origin}/{destination}")
@@ -20,6 +22,7 @@ public class FareDetailsController {
 	@Autowired
 	private FareDetailsService service;
 	
+
 	private static final Logger logger = LoggerFactory.getLogger(FareDetailsController.class);
 
 	@RequestMapping(method = GET)
@@ -28,6 +31,7 @@ public class FareDetailsController {
 			@RequestParam(value = "currency", defaultValue = "EUR") String currency) {
 		
 		logger.info("Executing getFare()");
+
 
 
 		CompletableFuture<Fare> result = service.getFareDetails(origin, destination);

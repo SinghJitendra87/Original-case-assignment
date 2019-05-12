@@ -43,11 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.authorizeRequests().antMatchers("/").permitAll();
 	}
-	/*
-	 * @Bean public OAuth2RestTemplate createRestTemplate(OAuth2ClientContext
-	 * clientContext) { return new
-	 * OAuth2RestTemplate(oAuth2ProtectedResourceDetails(), clientContext); }
-	 */
+
 
 	@Bean
 	public OAuth2RestOperations oauth2RestTemplate() {
