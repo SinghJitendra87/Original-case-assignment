@@ -11,32 +11,32 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.afkl.cases.df.serviceImpl.MetricServiceImpl;
+
 @Component
 public class MetricFilter implements Filter {
 
 	@Autowired
-	private MetricService metricService;
+	private MetricServiceImpl metricService;
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws java.io.IOException, ServletException {
 		chain.doFilter(request, response);
-
 		int status = ((HttpServletResponse) response).getStatus();
-		
 		metricService.increaseCount(status);
 	}
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		
+
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
