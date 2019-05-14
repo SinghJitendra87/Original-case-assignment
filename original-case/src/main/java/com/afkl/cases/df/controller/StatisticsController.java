@@ -12,8 +12,12 @@ import com.afkl.cases.df.service.MetricService;
 @RequestMapping("/status-metric")
 public class StatisticsController {
 
+	private final MetricService metricService;
+
 	@Autowired
-	private MetricService metricService;
+	public StatisticsController(MetricService service) {
+		this.metricService = service;
+	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public StatisticsMetric getStatusMetric() {

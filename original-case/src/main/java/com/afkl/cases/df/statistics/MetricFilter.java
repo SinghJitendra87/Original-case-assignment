@@ -16,8 +16,12 @@ import com.afkl.cases.df.serviceImpl.MetricServiceImpl;
 @Component
 public class MetricFilter implements Filter {
 
+	private final MetricServiceImpl metricService;
+
 	@Autowired
-	private MetricServiceImpl metricService;
+	public MetricFilter(final MetricServiceImpl service) {
+		this.metricService = service;
+	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -26,7 +30,7 @@ public class MetricFilter implements Filter {
 		chain.doFilter(request, response);
 		int status = ((HttpServletResponse) response).getStatus();
 		long responseTime = (System.currentTimeMillis() - startTime);
-		metricService.increaseCount(status,responseTime);
+		metricService.increaseCount(status, responseTime);
 	}
 
 	@Override

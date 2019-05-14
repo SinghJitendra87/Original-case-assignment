@@ -6,6 +6,12 @@ public class FareDetails {
 	private Currency currency;
 	private String originCode, originName, originDescription, destinationCode, destinationName, destinationDescription;
 
+	
+	
+	public FareDetails() {
+		super();
+	}
+
 	public FareDetails(final double amount, final Currency currency, final String originCode, final String originName, final String originDescription,
 			final String destinationCode, final String destinationName, final String destinationDescription) {
 		super();

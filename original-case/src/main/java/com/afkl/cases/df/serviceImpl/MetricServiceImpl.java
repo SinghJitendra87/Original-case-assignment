@@ -11,12 +11,12 @@ import com.afkl.cases.df.service.MetricService;
 @Service
 public class MetricServiceImpl implements MetricService{
 
+	private final StatisticsMetric statisticsMetric;
+	
 	public MetricServiceImpl() {
 		super();
 		statisticsMetric = new StatisticsMetric();
 	}
-
-	private StatisticsMetric statisticsMetric;
 
 	@Override
 	public void increaseCount(final int status, final long responseTime) {

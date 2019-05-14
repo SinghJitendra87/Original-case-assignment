@@ -19,8 +19,12 @@ import com.afkl.cases.df.service.AirportService;
 @Service
 public class AirportServiceImpl implements AirportService {
 
+	private final SecurityConfiguration securityConfiguration;
+
 	@Autowired
-	private SecurityConfiguration securityConfiguration;
+	public AirportServiceImpl(final SecurityConfiguration service) {
+		this.securityConfiguration = service;
+	}
 
 	@Value("${travel.api.uri.airportsAll}")
 	private String uriAirports;

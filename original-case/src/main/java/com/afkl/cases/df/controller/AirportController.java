@@ -12,17 +12,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.afkl.cases.df.model.Locations;
 import com.afkl.cases.df.service.AirportService;
 
-
-
 @RestController
 @RequestMapping("/airports")
 public class AirportController {
-	
+
+	private final AirportService service;
+
 	@Autowired
-	private AirportService service;
-	
+	public AirportController(AirportService service) {
+		this.service = service;
+	}
+
 	@RequestMapping(method = GET)
-    public Callable<Locations> list(@RequestParam(value = "lang", defaultValue = "en") String lang) {
+	public Callable<Locations> list(@RequestParam(value = "lang", defaultValue = "en") String lang) {
 		return service.getLocations(lang);
 	}
 

@@ -22,8 +22,16 @@ import com.afkl.cases.df.service.FareDetailsService;
 @RequestMapping("/fareDetails/{origin}/{destination}")
 public class FareDetailsController {
 
-	@Autowired
-	private FareDetailsService service;
+	private final FareDetailsService service;
+
+    @Autowired
+    public FareDetailsController(FareDetailsService service) {
+        this.service = service;
+    }
+	
+	/*
+	 * @Autowired private FareDetailsService service;
+	 */
 
 	private static final Logger logger = LoggerFactory.getLogger(FareDetailsController.class);
 

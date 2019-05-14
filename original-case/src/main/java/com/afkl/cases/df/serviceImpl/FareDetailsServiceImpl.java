@@ -16,10 +16,14 @@ import com.afkl.cases.df.model.Location;
 import com.afkl.cases.df.service.FareDetailsService;
 
 @Service
-public class FareDetailsServiceImpl implements FareDetailsService{
+public class FareDetailsServiceImpl implements FareDetailsService {
+
+	private final SecurityConfiguration securityConfiguration;
 
 	@Autowired
-	private SecurityConfiguration securityConfiguration;
+	public FareDetailsServiceImpl(final SecurityConfiguration service) {
+		this.securityConfiguration = service;
+	}
 
 	@Value("${travel.api.uri.fares}")
 	private String uriFares;
