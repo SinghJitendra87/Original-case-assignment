@@ -24,9 +24,7 @@ public class ControllerTest {
 
 	@Value("${original.uri.fareDetails}")
 	private String uriFairDetails;
-	
-	
-	
+
 	@Value("${original.uri.airportsAll}")
 	private String uriairportsAll;
 
