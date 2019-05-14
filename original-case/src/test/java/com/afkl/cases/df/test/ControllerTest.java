@@ -1,7 +1,5 @@
 package com.afkl.cases.df.test;
 
-import static org.junit.Assert.assertThat;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,8 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
