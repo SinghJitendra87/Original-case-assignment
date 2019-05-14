@@ -19,7 +19,7 @@ public class MetricServiceImpl implements MetricService{
 	private StatisticsMetric statisticsMetric;
 
 	@Override
-	public void increaseCount(int status) {
+	public void increaseCount(final int status, final long responseTime) {
 		Integer reqProcessed = statisticsMetric.getReqProcessed();
 		Integer statusCount;
 		ConcurrentMap<Integer, Integer> statusMetricMap;
@@ -29,6 +29,10 @@ public class MetricServiceImpl implements MetricService{
 			statusMetricMap = new ConcurrentHashMap<Integer, Integer>();
 			statusMetricMap.put(status, 1);
 			statisticsMetric.setStatusMetric(statusMetricMap);
+			statisticsMetric.setAvgResponseTime(responseTime);
+			statisticsMetric.setMinResponseTime(responseTime);
+			statisticsMetric.setMaxResponseTime(responseTime);
+			statisticsMetric.setTotalResponseTime(responseTime);
 		} else {
 			statisticsMetric.setReqProcessed(reqProcessed + 1);
 			statusMetricMap = statisticsMetric.getStatusMetric();
@@ -38,6 +42,12 @@ public class MetricServiceImpl implements MetricService{
 			} else {
 				statusMetricMap.put(status, statusCount + 1);
 			}
+			
+			statisticsMetric.setTotalResponseTime(statisticsMetric.getTotalResponseTime()+responseTime);			
+			statisticsMetric.setAvgResponseTime(statisticsMetric.getTotalResponseTime()/statisticsMetric.getReqProcessed());
+			
+			statisticsMetric.setMinResponseTime(responseTime<statisticsMetric.getMinResponseTime()?responseTime:statisticsMetric.getMinResponseTime());
+			statisticsMetric.setMaxResponseTime(responseTime>statisticsMetric.getMaxResponseTime()?responseTime:statisticsMetric.getMaxResponseTime());
 		}
 	}
 	

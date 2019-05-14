@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.afkl.cases.df.common.SecurityConfiguration;
 import com.afkl.cases.df.model.Embedded;
 import com.afkl.cases.df.model.Location;
 import com.afkl.cases.df.model.Locations;
-import com.afkl.cases.df.security.SecurityConfiguration;
 import com.afkl.cases.df.service.AirportService;
 
 @Service

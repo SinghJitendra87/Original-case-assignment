@@ -22,9 +22,11 @@ public class MetricFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws java.io.IOException, ServletException {
+		long startTime = System.currentTimeMillis();
 		chain.doFilter(request, response);
 		int status = ((HttpServletResponse) response).getStatus();
-		metricService.increaseCount(status);
+		long responseTime = (System.currentTimeMillis() - startTime);
+		metricService.increaseCount(status,responseTime);
 	}
 
 	@Override
